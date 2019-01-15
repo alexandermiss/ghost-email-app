@@ -12,8 +12,8 @@ const Promise = require('bluebird');
 const listener = function (post, action){
   const postUrl = urlService.getUrlByResourceId(post.id, {absolute: true})
   const postTitle = post.title;
-  const mailMessage = action === 'new' ? 'ha publicado el post:' : 'modificó el post:';
-  const mailSubject = action === 'new' ? 'Nuevo post:' : 'Actualizacion del post';
+  const mailMessage = action === 'new' ? 'Un nuevo post ha sido creado!' : 'Hay una actualización del post!';
+  const mailSubject = action === 'new' ? 'Un nuevo post ha sido creado!' : 'Hay una actualización de un post!';
   const data = {postUrl: postUrl, postTitle: postTitle, mailMessage: mailMessage};
 
   utilsService.generateContent({template: 'mail', data: data})
